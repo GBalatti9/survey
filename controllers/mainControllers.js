@@ -91,6 +91,7 @@ module.exports = {
         console.log({params});
         let { difficulty } = req.body;
         difficulty = Number(difficulty);
+        let isLoading = true;
         try {
             if (questions.length === 0) {
                 const questionsAndOptions = await findAllQuestionsWithOptions(difficulty);
