@@ -4,8 +4,9 @@ const { mainRoutes } = require('./routes/index');
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true })); // para usar los datos que llegan de los formularios
-app.use(express.json()); // Para leer archivos .JSON
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json());
+app.use(express.static('public'))
 
 app.set('view engine', 'ejs');
 app.set('views', [
@@ -13,6 +14,13 @@ app.set('views', [
 ])
 
 app.use('/', mainRoutes);
+
+app.use((req, res, next) => {
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', '0');
+    next();
+});
 
 const PORT = 3000;
 

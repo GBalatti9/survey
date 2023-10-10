@@ -9,27 +9,32 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
+<body <% if(result === '100%') { %>style="background-image: url('../img/festejo-la-bombonera-boca.gif'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;" <% } %> >
     <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
-        <div class="circle border border-primary" style="width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-            <p class="m-auto text-primary"><%= result %></p>
+        <div class="circle border border-warning" style="width: 70px; height: 70px; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+            <p class="m-auto text-warning"><%= result %></p>
         </div>
         <% if(result === '100%') {%>
-            <p>Bostero viejo nomás</p>
+            <p class="text-warning">SE VIENE BOOOOOCA</p>
+            <video src="../videos/ssstik.io_1696950356631.mp4" alt="duka" style="height: 400px; width: 250px;" controls></video>
         <% } else if(result > '50%') {%>
             <p>No está mal</p>
+            <img src="../img/almiron.png" alt="almiron" style="width: 200px; height: 200px;">
         <% } else { %>
             <p>¿No serás gallina, no?</p>
+            <img src="../img/gallina.jpeg" alt="gallina" style="width: 200px; height: 200px;">
         <% } %>
         <% if(wrongAnswers.length > 0) {%>
             <!-- && wrongUserChoices.length > 0 -->
             <h4>Respuestas incorrectas</h4>
             <% wrongAnswers.forEach(answer => { %>
                 <p class="text-danger"><%= answer.question %></p>
-                <div class="container d-flex justify-content-center" style="max-width: 600px;">
-                <p class="text-danger" style="box-sizing: border-box;">Tu respuesta: <%= answer.userChoice %></p>
+                <div class="container d-flex justify-content-evenly" style="max-width: 600px;">
+                <p class="text-danger" style="box-sizing: border-box;">Tu respuesta:
+                <%= answer.userChoice %></p>
                 <% answer.correctAnswer.forEach(el => { %>
-                    <p class="text-success" style="box-sizing: border-box;">Respuesta correcta: <%= el.option %></p>
+                    <p class="text-success" style="box-sizing: border-box;">Respuesta correcta: 
+                        <%= el.option %></p>
                 <% }) %>
                 </div>
                 <% }) %>
@@ -38,7 +43,7 @@
             <%# }) %> -->
         <% } %>
         <a href="/">
-        <input type="submit" class="btn btn-primary" value="Volver a inicio">
+        <input type="submit" class="btn btn-primary mt-2" value="Volver a inicio">
         </a>
     </div>
 </body>

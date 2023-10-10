@@ -91,7 +91,6 @@ module.exports = {
         console.log({params});
         let { difficulty } = req.body;
         difficulty = Number(difficulty);
-        let isLoading = true;
         try {
             if (questions.length === 0) {
                 const questionsAndOptions = await findAllQuestionsWithOptions(difficulty);
@@ -116,6 +115,8 @@ module.exports = {
     },
     nextQuestion: async (req, res) => {
         const { answer } = req.body;
+        answeredQuestions.add(questions[currentQuestionIndex]);
+        console.log({answeredQuestions});
         // const { currentQuestionIndex, answer } = req.body;
         let userOption = await checkUserOption(answer)
         console.log({userOption});
@@ -125,7 +126,7 @@ module.exports = {
     },
     getQuestion: (req, res) => {
         if(questions.length === 0) {
-            res.redirect('/');
+            return res.redirect('/');
         }
         questionsAnswered++;
         // let { index } = req.params;
