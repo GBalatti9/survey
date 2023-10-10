@@ -123,6 +123,9 @@ module.exports = {
         res.redirect(`/question`);
     },
     getQuestion: (req, res) => {
+        if(questions.length === 0) {
+            res.redirect('/');
+        }
         questionsAnswered++;
         // let { index } = req.params;
         // let nextQuestion = questions[index];
