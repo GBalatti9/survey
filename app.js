@@ -1,6 +1,6 @@
 const { express } = require("./config/plugins");
 const path = require('path');
-const { mainRoutes, easyRoutes, mediumRoutes, hardRoutes } = require('./routes/index');
+const { mainRoutes } = require('./routes/index');
 
 const app = express();
 
@@ -12,9 +12,6 @@ app.set('views', [
     path.join(__dirname, "./views/"),
 ])
 
-app.use('/', easyRoutes);
-// app.use('/', mediumRoutes);
-// app.use('/', hardRoutes);
 app.use('/', mainRoutes);
 
 const PORT = 3000;

@@ -8,9 +8,6 @@
 
 </head>
 <body class="text-center d-flex flex-column justify-content-center align-items-center" style="min-height:100vh;">
-    <% if(isLoading) {%>
-        <p>Cargando...</p>
-    <% } else {%>
         
     <form action="/nextQuestion" method="post" class="container">
         <% if(totalQuestions) {%>
@@ -37,6 +34,5 @@
         <input type="hidden" name="currentQuestionIndex" value="<%#= currentQuestionIndex %>">
         <button type="submit">Anterior</button>
     </form> -->
-    <% } %>
 </body>
 </html>
