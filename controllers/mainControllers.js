@@ -104,9 +104,10 @@ module.exports = {
             }
             // let currentQuestionIndex = 0;
             totalQuestions = questions.length;
-            questionsAnswered++;
+            questionsAnswered = currentQuestionIndex + 1;
             console.log({totalQuestions}, {questions});
-            res.render('form', { question: questions[currentQuestionIndex], currentQuestionIndex, totalQuestions, questionsAnswered });
+            // res.render('form', { question: questions[currentQuestionIndex], currentQuestionIndex, totalQuestions, questionsAnswered });
+            res.redirect('/question');
 
         } catch (error) {
             console.log(error);
@@ -122,13 +123,14 @@ module.exports = {
         console.log({userOption});
         // let nextQuestionIndex = Number(currentQuestionIndex) + 1;
         currentQuestionIndex++;
+        // res.render('form', {question: questions[currentQuestionIndex], currentQuestionIndex, totalQuestions, questionsAnswered});
         res.redirect(`/question`);
     },
     getQuestion: (req, res) => {
         if(questions.length === 0) {
             return res.redirect('/');
         }
-        questionsAnswered++;
+        questionsAnswered = currentQuestionIndex + 1;
         // let { index } = req.params;
         // let nextQuestion = questions[index];
         let nextQuestion = questions[currentQuestionIndex];
