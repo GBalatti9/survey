@@ -102,7 +102,6 @@ module.exports = {
                     return;
                 }
             }
-            // let currentQuestionIndex = 0;
             totalQuestions = questions.length;
             questionsAnswered = currentQuestionIndex + 1;
             console.log({totalQuestions}, {questions});

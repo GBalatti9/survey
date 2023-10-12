@@ -13,8 +13,8 @@ router.post('/', postIndex);
 router.post('/nextQuestion', nextQuestion);
 
 // GET --> /
-// router.get('/question/:index', getQuestion);
-router.get('/question/', getQuestion);
+// router.get('/question/', getQuestion);
+router.get('/question', getQuestion);
 
 module.exports = {
     mainRoutes: router,
