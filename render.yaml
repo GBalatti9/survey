@@ -2,4 +2,4 @@ version: 1
 services:
   - name: web
     startCommand: "node app.js"  # Ajusta la ruta del archivo de entrada
-    directory: "/opt/render/project"  # Ajusta el directorio raíz
+    directory: "/opt/render/project/app.js"  # Ajusta el directorio raíz
