@@ -1,4 +1,5 @@
-const { express } = require("./config/plugins");
+// const { express } = require("./config/plugins");
+const express = require('express');
 const path = require('path');
 const { mainRoutes } = require('./routes/index');
 

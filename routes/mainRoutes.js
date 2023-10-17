@@ -1,4 +1,5 @@
-const { express } = require("../config/plugins");
+// const { express } = require("../config/plugins");
+const express = require('express');
 const { getIndex, postIndex, nextQuestion, getQuestion } = require("../controllers/mainControllers");
 
 const router = express.Router();
