@@ -17,7 +17,7 @@ module.exports = {
   "production": {
     "username": process.env.USERNAME,
     "password": process.env.PASSWORD,
-    "database": "triviaboca",
+    "database": process.env.NAME,
     "host": process.env.DATABASE_URL,
     "dialect": "mysql"
   }
