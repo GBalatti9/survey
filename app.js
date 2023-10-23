@@ -3,6 +3,7 @@ const path = require('path');
 const { mainRoutes } = require('./routes/index');
 
 const app = express();
+const PORT = 3000;
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true })); 
@@ -21,8 +22,6 @@ app.use((req, res, next) => {
     res.header('Expires', '0');
     next();
 });
-
-const PORT = 3000;
 
 app.listen(PORT, () => {
     console.log(`Servidor en puerto ${PORT}...`);

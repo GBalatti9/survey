@@ -15,10 +15,10 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "trivia_boca",
-    "host": "127.0.0.1",
+    "username": process.env.USERNAME,
+    "password": process.env.PASSWORD,
+    "database": "triviaboca",
+    "host": process.env.DATABASE_URL,
     "dialect": "mysql"
   }
 }
