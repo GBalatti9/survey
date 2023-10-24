@@ -92,6 +92,7 @@ module.exports = {
         let { difficulty } = req.body;
         difficulty = Number(difficulty);
         try {
+            console.log('Estoy aca');
             if (questions.length === 0) {
                 const questionsAndOptions = await findAllQuestionsWithOptions(difficulty);
                 const orderQuestions = questionsAndOptions.map(el => el.dataValues);
