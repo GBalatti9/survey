@@ -1,9 +1,15 @@
-const { express } = require("./config/plugins");
+const { express, cors } = require("./config/plugins");
 const path = require('path');
 const { mainRoutes } = require('./routes/index');
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors({
+    origin: 'http://127.0.0.1:5500',
+    methods: 'GET,POST,OPTIONS,PUT,PATCH,DELETE',
+    allowedHeaders: 'X-Requested-With,content-type',
+}));
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true })); 

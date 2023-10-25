@@ -39,11 +39,11 @@ const checkUserOption = async (option) => {
             findOption = false;
             answers.push({answerState: findOption, userChoice: option});
             // wrongChoices.push(option)
-            console.log({answers}, {wrongChoices});
+            // console.log({answers}, {wrongChoices});
         } else {
             findOption = true;
             answers.push(findOption);
-            console.log({answers});
+            // console.log({answers});
         }
         return findOption;
     } catch (error) {
@@ -55,9 +55,11 @@ const averageAnswer = (arr) => {
     let totalAnswers = arr.length;
     let trueAnswers = arr.filter(el => el === true).length;
     let average = (trueAnswers / totalAnswers) * 100;
-    console.log({totalAnswers}, {trueAnswers});
+    // console.log({totalAnswers}, {trueAnswers});
     return average;
 }
+
+
 
 // ENCUENTRO LAS PREGUNTAS MAL CONTESTADAS
 const findWrongQuestions = (arr1, arr2) => {
@@ -84,15 +86,20 @@ const findWrongQuestions = (arr1, arr2) => {
 
 module.exports = {
     getIndex: (req, res) => {
-        res.render('index');
+        // res.render('index');
+        return res.json({ message: 'Bienvenido' });
     },
     postIndex: async (req, res) => {
-        let params = req.params;
-        console.log({params});
+        let body = req.body;
+        console.log({ body });
+        // let params = req.params;
+        // console.log({params});
         let { difficulty } = req.body;
         difficulty = Number(difficulty);
+        console.log({ difficulty });
+        // console.log({ difficulty });
         try {
-            console.log('Estoy aca');
+            // console.log('Estoy aca');
             if (questions.length === 0) {
                 const questionsAndOptions = await findAllQuestionsWithOptions(difficulty);
                 const orderQuestions = questionsAndOptions.map(el => el.dataValues);
@@ -104,47 +111,59 @@ module.exports = {
                 }
             }
             totalQuestions = questions.length;
-            questionsAnswered = currentQuestionIndex + 1;
-            console.log({totalQuestions}, {questions});
+            // questionsAnswered = currentQuestionIndex + 1;
+            // console.log({ totalQuestions }, { questions }, { questionsAnswered });
             // res.render('form', { question: questions[currentQuestionIndex], currentQuestionIndex, totalQuestions, questionsAnswered });
-            res.redirect('/question');
+            res.json({ questions: questions, totalQuestions });
+            // res.redirect('/question');
 
         } catch (error) {
             console.log(error);
         }
 
     },
-    nextQuestion: async (req, res) => {
-        const { answer } = req.body;
-        answeredQuestions.add(questions[currentQuestionIndex]);
-        console.log({answeredQuestions});
-        // const { currentQuestionIndex, answer } = req.body;
-        let userOption = await checkUserOption(answer)
-        console.log({userOption});
-        // let nextQuestionIndex = Number(currentQuestionIndex) + 1;
-        currentQuestionIndex++;
-        // res.render('form', {question: questions[currentQuestionIndex], currentQuestionIndex, totalQuestions, questionsAnswered});
-        res.redirect(`/question`);
-    },
     getQuestion: (req, res) => {
-        if(questions.length === 0) {
-            return res.redirect('/');
-        }
-        questionsAnswered = currentQuestionIndex + 1;
-        // let { index } = req.params;
-        // let nextQuestion = questions[index];
-        let nextQuestion = questions[currentQuestionIndex];
-        if(nextQuestion === undefined){
-            // ESTO INDICA QUE SE TERMINA EL CUESTIONARIO
-            let average = `${Math.round(averageAnswer(answers))}%`;
-            let wrongAnswers = findWrongQuestions(answers, questions);
-            currentQuestionIndex = 0;
-            questions = [];
-            answers = [];
-            totalQuestions = 0;
-            questionsAnswered = 0;
-            return res.render('result', {result: average, wrongAnswers});
-        }
-        res.render('form', { question: nextQuestion, currentQuestionIndex, totalQuestions, questionsAnswered});
+        // console.log('ESTOY EN EL GET DE /QUESTION');
+        // let { answer } = req.body;
+        // console.log({ answer });
+        // if(questions.length === 0) {
+        //     return res.redirect('/');
+        // }
+        // questionsAnswered = currentQuestionIndex + 1;
+        // // let { index } = req.params;
+        // // let nextQuestion = questions[index];
+        // let currentQuestion = questions[currentQuestionIndex];
+        // // console.log({ question });
+        // if(currentQuestion === undefined){
+        //     // currentQuestion INDICA QUE SE TERMINA EL CUESTIONARIO
+        //     let average = `${Math.round(averageAnswer(answers))}%`;
+        //     let wrongAnswers = findWrongQuestions(answers, questions);
+        //     currentQuestionIndex = 0;
+        //     questions = [];
+        //     answers = [];
+        //     totalQuestions = 0;
+        //     questionsAnswered = 0;
+        //     return res.render('result', {result: average, wrongAnswers});
+        // }
+        // // res.render('form', { question: currentQuestion, currentQuestionIndex, totalQuestions, questionsAnswered});
+        // res.json(currentQuestion);
+    },
+
+    nextQuestion: async (req, res) => {
+        // const { answer } = req.body;
+        // console.log(req.body);
+        // answeredQuestions.add(questions[currentQuestionIndex]);
+        // console.log({ questions });
+        // console.log({ answeredQuestions });
+        // // console.log({answeredQuestions});
+        // // const { currentQuestionIndex, answer } = req.body;
+        // let userOption = await checkUserOption(answer)
+        // console.log({ userOption });
+        // // let nextQuestionIndex = Number(currentQuestionIndex) + 1;
+        // currentQuestionIndex++;
+        // console.log({ currentQuestionIndex });
+        // // res.render('form', {question: questions[currentQuestionIndex], currentQuestionIndex, totalQuestions, questionsAnswered});
+        // // res.redirect(`/`);
+        // res.json();
     }
 }
