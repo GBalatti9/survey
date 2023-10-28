@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="d-flex flex-column justify-content-center align-items-center" style="min-height:100vh;">
+    <h1 class="text-center" id="title" style="width: 400px;">Cuánto sabés de Boca en la Libertadores</h1>
+
+    <div class="forms-to-init container d-flex justify-content-evenly" style="width: 300px;">
+        <form action="/" method="POST" id="formEasy">
+            <input type="hidden" name="difficulty" value="1">
+            <button type="submit" class="btn btn-primary btn-lg">Fácil</button>
+        </form>
+        <form action="/" method="POST" id="formMedium">
+            <input type="hidden" name="difficulty" value="2">
+            <button type="submit" class="btn btn-warning btn-lg">Medio</button>
+        </form>
+        <form action="/" method="POST" id="formDifficulty">
+            <input type="hidden" name="difficulty" value="3">
+            <button type="submit" class="btn btn-primary btn-lg">Dificil</button>
+        </form>
+    </div>
+    <div class='result'></div>
+    <form action="/nextQuestion" method="POST"></form>
+    <a href="./" class="link">
+        <button type="button"> Volver al inicio </button>
+    </a>
+</body>
+<script src="script.js"></script>
+
+</html>
